@@ -11,11 +11,53 @@ function reqAPI(uuid) {
     .then(data => {
 
         setStats(data.xp, data.bounty, data.kills, data.deaths, data.currentKillStreak, data.highestKillStreak, data.playerId, "PlaceholderName");
+        setHeroStats(data.heroes);
 
     })
     .catch(error => {
       console.error("API Error");
     });
+}
+
+function setHeroStats(heroes) {
+
+    const heroAccordion = document.getElementById("accordionHero");
+
+    for (const hero in heroes) {
+        
+        const collapseId = "collapse_" + hero;
+
+        const accordionEntry = document.createElement("div");
+        accordionEntry.classList.add("accordion-item");
+        heroAccordion.appendChild(accordionEntry);
+
+        const accordionHeader = document.createElement("h2");
+        accordionHeader.classList.add("accordion-header");
+        accordionEntry.appendChild(accordionHeader);
+
+        const accordionButton = document.createElement("button");
+        accordionButton.classList.add("accordion-button");
+        accordionButton.type = "button";
+        accordionButton.setAttribute("data-bs-toggle", "collapse");
+        accordionButton.setAttribute("data-bs-target", "#"+collapseId);
+        accordionButton.setAttribute("aria-expanded", "true");
+        accordionButton.setAttribute("aria-controls", collapseId);
+        accordionButton.innerText = hero;
+        accordionHeader.appendChild(accordionButton);
+
+        const accordionCollapse = document.createElement("div");
+        accordionCollapse.id = collapseId;
+        accordionCollapse.classList.add("accordion-collapse");
+        accordionCollapse.classList.add("collapse");
+        accordionCollapse.setAttribute("data-bs-parent", "#accordionHero");
+        accordionEntry.appendChild(accordionCollapse);
+
+        const accordionBody = document.createElement("div");
+        accordionBody.classList.add("accordion-body");
+        accordionBody.innerText = "Placeholder Text";
+        accordionCollapse.appendChild(accordionBody);
+
+    }
 }
 
 function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
