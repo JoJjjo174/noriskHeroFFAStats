@@ -23,11 +23,7 @@
     color: #128AF9;
 }
 
-.accordion-button {
-    padding: 14px;
-}
-
-.accordion-body {
+.accordion-button, .accordion-body {
     padding: 14px;
 }
 
