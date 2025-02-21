@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="bootstrap/styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Player Stats</title>
@@ -15,7 +15,7 @@
                     <img src="https://mc-heads.net/body/26a4fcde-de39-4ff0-8ea1-786582b7d8ee" class="playerModel">
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-column">
-                    <h1>Player Stats</h1>
+                    <h1 class="primary">Player Stats</h1>
 
                     <table class="flex-grow-1">
                         <tbody>
@@ -25,7 +25,7 @@
                                 </td>
                                 <td>XP</td>
                                 <td>
-                                    <strong>44870</strong>
+                                    <strong class="primary">44870</strong>
                                 </td>
                             </tr>
 
@@ -35,7 +35,7 @@
                                 </td>
                                 <td>Bounty</td>
                                 <td>
-                                    <strong>0</strong>
+                                    <strong class="primary">0</strong>
                                 </td>
                             </tr>
 
@@ -45,7 +45,7 @@
                                 </td>
                                 <td>K/D</td>
                                 <td>
-                                    <strong>2,09</strong>
+                                    <strong class="primary">2,09</strong>
                                 </td>
                             </tr>
 
@@ -55,7 +55,7 @@
                                 </td>
                                 <td>Kills</td>
                                 <td>
-                                    <strong>94</strong>
+                                    <strong class="primary">94</strong>
                                 </td>
                             </tr>
 
@@ -65,7 +65,7 @@
                                 </td>
                                 <td>Deaths</td>
                                 <td>
-                                    <strong>45</strong>
+                                    <strong class="primary">45</strong>
                                 </td>
                             </tr>
 
@@ -75,7 +75,7 @@
                                 </td>
                                 <td>Kill Streak</td>
                                 <td>
-                                    <strong>0</strong>
+                                    <strong class="primary">0</strong>
                                 </td>
                             </tr>
 
@@ -85,7 +85,7 @@
                                 </td>
                                 <td>Highest Kill Streak</td>
                                 <td>
-                                    <strong>29</strong>
+                                    <strong class="primary">29</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -93,7 +93,46 @@
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <h1>Hero Stats</h1>
+                    <h1 class="primary">Hero Stats</h1>
+
+                    <div class="accordion" id="accordionHero">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Aang
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionHero">
+                            <div class="accordion-body">
+                                aesrgjhsdifghtiaseduhvbtriusdehgbiued
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Katara
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionHero">
+                            <div class="accordion-body">
+                                aesrgjhsdifghtiaseduhvbtriusdehgbiued
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Toph
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionHero">
+                            <div class="accordion-body">
+                                aesrgjhsdifghtiaseduhvbtriusdehgbiued
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

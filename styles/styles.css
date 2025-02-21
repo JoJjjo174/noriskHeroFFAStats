@@ -18,3 +18,19 @@
     image-rendering: pixelated;
     height: 32px;
 }
+
+.primary {
+    color: #128AF9;
+}
+
+.accordion-button {
+    padding: 14px;
+}
+
+.accordion-body {
+    padding: 14px;
+}
+
+.accordion-collapse {
+    overflow-x: hidden;
+}
