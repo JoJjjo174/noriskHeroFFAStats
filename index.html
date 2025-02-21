@@ -14,8 +14,8 @@
                 <div class="col-lg-8 col-md-12 col-sm-12">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column align-items-center">
-                            <h1 class="primary">NoRiskk</h1>
-                            <img src="https://mc-heads.net/body/26a4fcde-de39-4ff0-8ea1-786582b7d8ee" class="playerModel">
+                            <h1 class="primary" id="player_name">Name</h1>
+                            <img src="https://mc-heads.net/body/26a4fcde-de39-4ff0-8ea1-786582b7d8ee" class="playerModel" id="player_skin" alt="Player's Minecraft Skin">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column align-items-center">
                             <h1 class="primary">Player Stats</h1>
@@ -27,8 +27,8 @@
                                             <img src="assets/xp.png" alt="XP Icon" class="icon">
                                         </td>
                                         <td>XP</td>
-                                        <td class="primary">
-                                            44870
+                                        <td class="primary text-end" id="xp_entry">
+                                            0 XP
                                         </td>
                                     </tr>
         
@@ -37,8 +37,8 @@
                                             <img src="assets/bounty.png" alt="Bounty Icon" class="icon">
                                         </td>
                                         <td>Bounty</td>
-                                        <td class="primary">
-                                            0
+                                        <td class="primary text-end" id="bounty_entry">
+                                            0 XP
                                         </td>
                                     </tr>
         
@@ -47,8 +47,8 @@
                                             <img src="assets/kd.png" alt="K/D Icon" class="icon">
                                         </td>
                                         <td>K/D</td>
-                                        <td class="primary">
-                                            2,09
+                                        <td class="primary text-end" id="kd_entry">
+                                            0
                                         </td>
                                     </tr>
         
@@ -57,8 +57,8 @@
                                             <img src="assets/kills.png" alt="Kills Icon" class="icon">
                                         </td>
                                         <td>Kills</td>
-                                        <td class="primary">
-                                            94
+                                        <td class="primary text-end" id="kills_entry">
+                                            0
                                         </td>
                                     </tr>
         
@@ -67,8 +67,8 @@
                                             <img src="assets/deaths.png" alt="Deaths Icon" class="icon">
                                         </td>
                                         <td>Deaths</td>
-                                        <td class="primary">
-                                            45
+                                        <td class="primary text-end" id="deaths_entry">
+                                            0
                                         </td>
                                     </tr>
         
@@ -77,7 +77,7 @@
                                             <img src="assets/streak.png" alt="Killstreak Icon" class="icon">
                                         </td>
                                         <td>Killstreak</td>
-                                        <td class="primary">
+                                        <td class="primary text-end" id="killstreak_entry">
                                             0
                                         </td>
                                     </tr>
@@ -87,8 +87,8 @@
                                             <img src="assets/max_streak.png" alt="Highest Killstreak Icon" class="icon">
                                         </td>
                                         <td>Highest Killstreak</td>
-                                        <td class="primary">
-                                            29
+                                        <td class="primary text-end" id="max_killstreak_entry">
+                                            0
                                         </td>
                                     </tr>
                                 </tbody>
@@ -155,7 +155,7 @@
             </div>
         </div>
 
-
+        <script src="scripts/statpage.js"></script>
         <script src="bootstrap/scripts.js"></script>
     </body>
 </html>
