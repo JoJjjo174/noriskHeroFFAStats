@@ -1,4 +1,23 @@
 
+function reqAPI(uuid) {
+
+    fetch("https://api.hglabor.de/stats/ffa/"+uuid)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        setStats(data.xp, data.bounty, data.kills, data.deaths, data.currentKillStreak, data.highestKillStreak, data.playerId, "PlaceholderName");
+
+    })
+    .catch(error => {
+      console.error("API Error");
+    });
+}
+
 function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
     const kd = Math.round((kills / deaths) * 100) / 100
 
