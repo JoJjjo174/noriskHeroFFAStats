@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url("../fonts/minecraft_font.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: "Minecraft", Arial, serif;
+    font-size: 28px;
+}
+
 .playerModel {
     filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.5));
 }
