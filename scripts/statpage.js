@@ -23,6 +23,7 @@ function setHeroStats(heroes) {
 
     const heroAccordion = document.getElementById("accordionHero");
 
+    let first = true;
     for (const hero in heroes) {
         
         const collapseId = "collapse_" + hero;
@@ -41,7 +42,12 @@ function setHeroStats(heroes) {
         accordionButton.type = "button";
         accordionButton.setAttribute("data-bs-toggle", "collapse");
         accordionButton.setAttribute("data-bs-target", "#"+collapseId);
-        accordionButton.setAttribute("aria-expanded", "true");
+        if (first) {
+            accordionButton.setAttribute("aria-expanded", "true");
+        } else {
+            accordionButton.setAttribute("aria-expanded", "false");
+            accordionButton.classList.add("collapsed");
+        }
         accordionButton.setAttribute("aria-controls", collapseId);
         accordionButton.innerText = removeUnderscore(hero);
         accordionHeader.appendChild(accordionButton);
@@ -50,6 +56,10 @@ function setHeroStats(heroes) {
         accordionCollapse.id = collapseId;
         accordionCollapse.classList.add("accordion-collapse");
         accordionCollapse.classList.add("collapse");
+        if (first) {
+            accordionCollapse.classList.add("show");
+            first = false;
+        }
         accordionCollapse.setAttribute("data-bs-parent", "#accordionHero");
         accordionEntry.appendChild(accordionCollapse);
 

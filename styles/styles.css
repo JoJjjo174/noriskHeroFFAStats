@@ -28,5 +28,6 @@
 }
 
 .accordion-collapse {
-    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 50vh;
 }
