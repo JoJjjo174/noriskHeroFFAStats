@@ -37,12 +37,13 @@ function setHeroStats(heroes) {
 
         const accordionButton = document.createElement("button");
         accordionButton.classList.add("accordion-button");
+        accordionButton.classList.add("text-capitalize");
         accordionButton.type = "button";
         accordionButton.setAttribute("data-bs-toggle", "collapse");
         accordionButton.setAttribute("data-bs-target", "#"+collapseId);
         accordionButton.setAttribute("aria-expanded", "true");
         accordionButton.setAttribute("aria-controls", collapseId);
-        accordionButton.innerText = hero;
+        accordionButton.innerText = removeUnderscore(hero);
         accordionHeader.appendChild(accordionButton);
 
         const accordionCollapse = document.createElement("div");
@@ -54,10 +55,44 @@ function setHeroStats(heroes) {
 
         const accordionBody = document.createElement("div");
         accordionBody.classList.add("accordion-body");
-        accordionBody.innerText = "Placeholder Text";
         accordionCollapse.appendChild(accordionBody);
 
+        for (const ability in heroes[hero]) {
+
+            const abilityHeader = document.createElement("h5");
+            abilityHeader.classList.add("primary");
+            abilityHeader.classList.add("text-capitalize");
+            abilityHeader.innerText = removeUnderscore(ability);
+            accordionBody.appendChild(abilityHeader);
+
+            const upgradeList = document.createElement("ul");
+            accordionBody.appendChild(upgradeList);
+
+            for (const upgrade in heroes[hero][ability]) {
+    
+                const listEntry = document.createElement("li");
+
+                const upgradeName = document.createElement("span");
+                upgradeName.classList.add("text-capitalize");
+                upgradeName.innerText = removeUnderscore(upgrade) + ": ";
+                listEntry.appendChild(upgradeName);
+
+                const upgradeLevel = document.createElement("span");
+                upgradeLevel.classList.add("primary");
+                upgradeLevel.innerText = heroes[hero][ability][upgrade].experiencePoints + " XP";
+                listEntry.appendChild(upgradeLevel);
+
+                upgradeList.appendChild(listEntry);
+
+            }
+
+        }
     }
+}
+
+function removeUnderscore(text) {
+    let name = text.replaceAll("_", " ");
+    return name;
 }
 
 function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
@@ -76,3 +111,5 @@ function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
     document.getElementById("player_skin").src = "https://mc-heads.net/body/" + uuid;
     document.getElementById("player_name").innerText = name;
 }
+
+reqAPI("9eee2a1e-7335-4382-925f-6d3faed53224");
