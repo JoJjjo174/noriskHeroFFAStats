@@ -1,13 +1,13 @@
 @font-face {
     font-family: "Minecraft";
-    src: url("../fonts/minecraft_font.ttf") format("truetype");
+    src: url("../fonts/minecraft_font.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
 
 * {
     font-family: "Minecraft", Arial, serif;
-    font-size: 28px;
+    border-radius: 0 !important;
 }
 
 .playerModel {
@@ -23,11 +23,11 @@
     color: #128AF9;
 }
 
-.accordion-button, .accordion-body {
-    padding: 14px;
-}
-
 .accordion-collapse {
     overflow-y: scroll;
     max-height: 50vh;
+}
+
+.btn-primary {
+    background-color: #128AF9;
 }

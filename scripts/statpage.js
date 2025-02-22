@@ -122,4 +122,15 @@ function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
     document.getElementById("player_name").innerText = name;
 }
 
+function loadNavbar() {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+    
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading the navbar:', error));
+  }
+
+loadNavbar();
 reqAPI("9eee2a1e-7335-4382-925f-6d3faed53224");
