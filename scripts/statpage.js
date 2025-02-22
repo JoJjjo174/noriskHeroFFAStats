@@ -1,5 +1,5 @@
 
-function reqAPI(uuid) {
+function reqAPI(uuid, name) {
 
     fetch("https://api.hglabor.de/stats/ffa/"+uuid)
     .then(response => {
@@ -10,7 +10,7 @@ function reqAPI(uuid) {
     })
     .then(data => {
 
-        setStats(data.xp, data.bounty, data.kills, data.deaths, data.currentKillStreak, data.highestKillStreak, data.playerId, "PlaceholderName");
+        setStats(data.xp, data.bounty, data.kills, data.deaths, data.currentKillStreak, data.highestKillStreak, data.playerId, name);
         setHeroStats(data.heroes);
 
     })
@@ -124,13 +124,27 @@ function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
 
 function loadNavbar() {
     fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
+        .then(response => response.text())
+        .then(data => {
     
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading the navbar:', error));
-  }
+        document.getElementById("navbar-placeholder").innerHTML = data;
+    })
+    .catch(error => console.error("Error loading the navbar:", error));
+}
+
+function getUUID(username) {
+    return fetch("https://api.ashcon.app/mojang/v2/user/"+username)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => data.uuid)
+    .catch(error => console.error("API Error"));
+}
 
 loadNavbar();
-reqAPI("9eee2a1e-7335-4382-925f-6d3faed53224");
+const urlParams = new URLSearchParams(window.location.search);
+const username = urlParams.get("player");
+getUUID(username).then(uuid => reqAPI(uuid, username));
