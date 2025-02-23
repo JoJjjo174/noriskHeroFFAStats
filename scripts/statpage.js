@@ -123,14 +123,14 @@ function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
 }
 
 function getUUID(username) {
-    return fetch("https://api.ashcon.app/mojang/v2/user/"+username)
+    return fetch("https://playerdb.co/api/player/minecraft/"+username)
     .then(response => {
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
         return response.json();
     })
-    .then(data => data.uuid)
+    .then(data => data.data.player.id)
     .catch(error => console.error("API Error"));
 }
 

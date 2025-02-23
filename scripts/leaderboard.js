@@ -73,14 +73,14 @@ function loadPage() {
 }
 
 function getUsername(uuid) {
-    return fetch("https://api.ashcon.app/mojang/v2/user/"+uuid)
+    return fetch("https://playerdb.co/api/player/minecraft/"+uuid)
     .then(response => {
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
         return response.json();
     })
-    .then(data => data.username)
+    .then(data => data.data.player.username)
     .catch(error => console.error("API Error"));
 }
 
@@ -94,7 +94,22 @@ const intersectionObserver = new IntersectionObserver((entries, observer) => {
             
             entry.target.innerText = "loading...";
             const uuid = entry.target.getAttribute("data-uuid");
-            getUsername(uuid).then(username => entry.target.innerText = username);
+            getUsername(uuid).then(username => {
+
+                entry.target.innerHTML = "";
+
+                const avatar = document.createElement("img");
+                avatar.classList.add("me-2");
+                avatar.src = "https://mc-heads.net/avatar/" + uuid +"/24";
+                avatar.alt = username + " avatar";
+                entry.target.appendChild(avatar);
+
+                const nameLink = document.createElement("a");
+                nameLink.href = "index.html?player=" + username;
+                nameLink.innerText = username;
+                entry.target.appendChild(nameLink);
+
+            });
 
             observer.unobserve(entry.target);
         }
