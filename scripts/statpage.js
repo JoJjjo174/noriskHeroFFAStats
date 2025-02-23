@@ -122,16 +122,6 @@ function setStats(xp, bounty, kills, deaths, streak, maxstreak, uuid, name) {
     document.getElementById("player_name").innerText = name;
 }
 
-function loadNavbar() {
-    fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-    
-        document.getElementById("navbar-placeholder").innerHTML = data;
-    })
-    .catch(error => console.error("Error loading the navbar:", error));
-}
-
 function getUUID(username) {
     return fetch("https://api.ashcon.app/mojang/v2/user/"+username)
     .then(response => {
@@ -144,7 +134,6 @@ function getUUID(username) {
     .catch(error => console.error("API Error"));
 }
 
-loadNavbar();
 const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get("player");
 getUUID(username).then(uuid => reqAPI(uuid, username));

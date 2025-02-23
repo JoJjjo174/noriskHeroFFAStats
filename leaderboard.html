@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap/styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Leaderboard</title>
+    </head>
+    <body>
+
+        <div id="navbar-placeholder"></div>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <select class="form-select">
+                        <option selected value="kills">Kills</option>
+                        <option value="xp">XP</option>
+                        <option value="bounty">Bounty</option>
+                        <option value="deaths">Deaths</option>
+                        <option value="killstreak">Killstreak</option>
+                        <option value="3">Highest Killstreak</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead class="sticky-header">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>XP</th>
+                        <th>Bounty</th>
+                        <th>Kills</th>
+                        <th>Deaths</th>
+                        <th>Killstreak</th>
+                        <th>Highest Killstreak</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardTable">
+                </tbody>
+            </table>
+
+            <button type="button" class="btn btn-primary mb-3" onclick="loadPage();">Load more</button>
+
+        </div>
+
+        <script src="scripts/navbar.js"></script>
+        <script src="scripts/leaderboard.js"></script>
+        <script src="bootstrap/scripts.js"></script>
+    </body>
+</html>

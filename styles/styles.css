@@ -31,3 +31,8 @@
 .btn-primary {
     background-color: #128AF9;
 }
+
+.sticky-header{
+    position:sticky;
+    top: 0 ;
+}
