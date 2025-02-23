@@ -13,18 +13,16 @@
 
         <div class="container">
 
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <select class="form-select">
-                        <option selected value="kills">Kills</option>
-                        <option value="xp">XP</option>
-                        <option value="bounty">Bounty</option>
-                        <option value="deaths">Deaths</option>
-                        <option value="killstreak">Killstreak</option>
-                        <option value="3">Highest Killstreak</option>
-                    </select>
-                </div>
-            </div>
+
+            <select class="form-select" id="sortSelect">
+                <option selected value="kills">Kills</option>
+                <option value="xp">XP</option>
+                <option value="bounty">Bounty</option>
+                <option value="deaths">Deaths</option>
+                <option value="currentKillStreak">Killstreak</option>
+                <option value="highestKillStreak">Highest Killstreak</option>
+            </select>
+
 
             <table class="table table-striped">
                 <thead class="sticky-header">

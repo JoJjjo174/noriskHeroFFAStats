@@ -1,10 +1,16 @@
-
 let page = 1;
+
+document.getElementById("sortSelect").addEventListener("change", function(event) {
+    document.getElementById("leaderboardTable").innerHTML = "";
+    page = 1;
+    loadPage();
+});
 
 function loadPage() {
 
+    const sortBy = document.getElementById("sortSelect").value;
     const params = new URLSearchParams({
-        sort: "kills",
+        sort: sortBy,
         page: page
     });
 
@@ -29,7 +35,8 @@ function loadPage() {
             tableRow.appendChild(positionEntry);
 
             const nameEntry = document.createElement("td");
-            nameEntry.innerText = item.playerId;
+            nameEntry.classList.add("nameEntry");
+            nameEntry.setAttribute("data-uuid", item.playerId);
             tableRow.appendChild(nameEntry);
 
             const xpEntry = document.createElement("td");
@@ -64,5 +71,65 @@ function loadPage() {
     });
 
 }
+
+function getUsername(uuid) {
+    return fetch("https://api.ashcon.app/mojang/v2/user/"+uuid)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => data.username)
+    .catch(error => console.error("API Error"));
+}
+
+
+// ------------------------------- ChatGPT :OO -------------------------------
+
+// IntersectionObserver, der nur einmal triggert, wenn das Element sichtbar wird
+const intersectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            
+            entry.target.innerText = "loading...";
+            const uuid = entry.target.getAttribute("data-uuid");
+            getUsername(uuid).then(username => entry.target.innerText = username);
+
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 }); // 50% des Elements muss sichtbar sein
+
+// MutationObserver, der auf Änderungen im DOM reagiert (Hinzufügung oder Entfernung von Elementen)
+const mutationObserver = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1 && node.classList.contains("nameEntry")) {
+                // Neues Element wird hinzugefügt - es muss beobachtet werden
+                intersectionObserver.observe(node);
+            }
+        });
+
+        mutation.removedNodes.forEach(node => {
+            if (node.nodeType === 1 && node.classList.contains("nameEntry")) {
+                // Entferntes Element - die Beobachtung stoppen
+                intersectionObserver.unobserve(node);
+            }
+        });
+    });
+});
+
+// MutationObserver auf den gesamten DOM anwenden (Subtree überwachen für tiefere Änderungen)
+mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+// Alle bestehenden Elemente der Klasse beobachten
+const existingElements = document.querySelectorAll(".nameEntry");
+existingElements.forEach(element => {
+    intersectionObserver.observe(element);
+});
+
+// ------------------------------- ChatGPT Ende ------------------------------
+
 
 loadPage();
