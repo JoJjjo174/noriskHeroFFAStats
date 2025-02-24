@@ -165,4 +165,5 @@ function getUUID(username) {
 
 const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get("player");
+document.getElementById("compareButton").setAttribute("href", "compare.html?player1="+username);
 getUUID(username).then(uuid => reqAPI(uuid, username));
