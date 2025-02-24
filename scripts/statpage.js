@@ -19,6 +19,30 @@ function reqAPI(uuid, name) {
     });
 }
 
+async function getUpgradeLevel(hero, skill, upgrade) {
+    if (!sessionStorage.getItem("herodata-" + hero)) {
+        try {
+            const response = await fetch("https://api.hglabor.de/ffa/hero/" + hero);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            sessionStorage.setItem("herodata-" + hero, JSON.stringify(data.properties));
+        } catch (error) {
+            console.error("API Error", error);
+        }
+    }
+
+    const skillData = JSON.parse(sessionStorage.getItem("herodata-"+hero))[skill];
+
+    for (const upgradeData in skillData) {
+        if (skillData[upgradeData].name.toLowerCase() == upgrade.toLowerCase()) {
+            return skillData[upgradeData].levelScale;
+        }
+    }
+}
+
 function setHeroStats(heroes) {
 
     const heroAccordion = document.getElementById("accordionHero");
@@ -89,7 +113,12 @@ function setHeroStats(heroes) {
 
                 const upgradeLevel = document.createElement("span");
                 upgradeLevel.classList.add("primary");
-                upgradeLevel.innerText = heroes[hero][ability][upgrade].experiencePoints + " XP";
+
+                getUpgradeLevel(hero, ability, removeUnderscore(upgrade))
+                .then(levelScale => {
+                    upgradeLevel.innerText =  + parseInt(Math.cbrt(heroes[hero][ability][upgrade].experiencePoints / levelScale));
+                });
+                //upgradeLevel.innerText = heroes[hero][ability][upgrade].experiencePoints;
                 listEntry.appendChild(upgradeLevel);
 
                 upgradeList.appendChild(listEntry);

@@ -19,7 +19,7 @@
     height: 32px;
 }
 
-.primary {
+.primary, a {
     color: #128AF9;
 }
 
