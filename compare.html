@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstrap/styles.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Compare</title>
+    </head>
+    <body>
+
+        <div id="navbar-placeholder"></div>
+
+        <div class="container">
+
+            <table class="table" id="compareTable">
+                <thead>
+                    <tr>
+                        <td>
+                            <form class="d-flex compareSearch" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search for player" name="player1" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+
+                            <img src="https://mc-heads.net/body/250f5dd0-b0a4-45c7-a6ea-081384ed2182" class="playerModel">
+                            <h2 id="compareName1">Name 1</h2>
+                        </td>
+                        <td>
+                            <h1>VS</h1>
+                        </td>
+                        <td>
+                            <form class="d-flex compareSearch" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search for player" name="player2" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+
+                            <img src="https://mc-heads.net/body/250f5dd0-b0a4-45c7-a6ea-081384ed2182" class="playerModel flipped">
+                            <h2 id="compareName2">Name 2</h2>
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td id="compareXp1">0</td>
+                        <th>XP</th>
+                        <td id="compareXp2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareBounty1">0</td>
+                        <th>Bounty</th>
+                        <td id="compareBounty2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareKd1">0</td>
+                        <th>K/D</th>
+                        <td id="compareKd2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareKills1">0</td>
+                        <th>Kills</th>
+                        <td id="compareKills2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareDeaths1">0</td>
+                        <th>Deaths</th>
+                        <td id="compareDeaths2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareKillstreak1">0</td>
+                        <th>Killstreak</th>
+                        <td id="compareKillstreak2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="compareMaxKillstreak1">0</td>
+                        <th>highest Killstreak</th>
+                        <td id="compareMaxKillstreak2">0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <script src="scripts/navbar.js"></script>
+        <script src="scripts/compare.js"></script>
+        <script src="bootstrap/scripts.js"></script>
+    </body>
+</html>
