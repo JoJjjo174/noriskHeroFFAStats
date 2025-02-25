@@ -105,7 +105,7 @@ const intersectionObserver = new IntersectionObserver((entries, observer) => {
                 entry.target.appendChild(avatar);
 
                 const nameLink = document.createElement("a");
-                nameLink.href = "index.html?player=" + username;
+                nameLink.href = "player.html?player=" + username;
                 nameLink.innerText = username;
                 entry.target.appendChild(nameLink);
 
