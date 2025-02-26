@@ -38,7 +38,7 @@ async function getUpgradeLevel(hero, skill, upgrade) {
 
     for (const upgradeData in skillData) {
         if (skillData[upgradeData].name.toLowerCase() == upgrade.toLowerCase()) {
-            return skillData[upgradeData].levelScale;
+            return { "levelScale": skillData[upgradeData].levelScale, "maxLevel": skillData[upgradeData].maxLevel };
         }
     }
 }
@@ -115,8 +115,9 @@ function setHeroStats(heroes) {
                 upgradeLevel.classList.add("primary");
 
                 getUpgradeLevel(hero, ability, removeUnderscore(upgrade))
-                .then(levelScale => {
-                    upgradeLevel.innerText =  + parseInt(Math.cbrt(heroes[hero][ability][upgrade].experiencePoints / levelScale));
+                .then(levelData => {
+                    const pLevel = parseInt(Math.cbrt(heroes[hero][ability][upgrade].experiencePoints / levelData.levelScale));
+                    upgradeLevel.innerText =  + pLevel + "/" + (levelData.maxLevel < pLevel ? pLevel : levelData.maxLevel);
                 });
                 //upgradeLevel.innerText = heroes[hero][ability][upgrade].experiencePoints;
                 listEntry.appendChild(upgradeLevel);
